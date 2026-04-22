@@ -1,3 +1,10 @@
 <Solution>
+  <Project Path="ConsoleApp1/ConsoleApp1.csproj" Id="fc047e63-304d-4683-a7c1-d827b674f1e1" />
   <Project Path="LinkedListLib/LinkedListLib.csproj" />
+  <Project Path="MyBinaryTreeLib/MyBinaryTreeLib.csproj" Id="6c02e3ae-6ff7-45bc-906a-2da4b5d12461" />
+  <Project Path="MyPriorityQueueLib/MyPriorityQueueLib.csproj" />
+  <Project Path="MyQueueLib/MyQueueLib.csproj" Id="9c8426f8-03ed-4d40-b5b3-f65bf61191cf" />
+  <Project Path="MyStackLib/MyStackLib.csproj" Id="a0b5628c-3b7f-42f0-aa81-8f54918b32e8" />
+  <Project Path="PostFixCalc/PostFixCalc.csproj" Id="43101388-3c43-45cd-a347-6b79f3874a25" />
+  <Project Path="WpfQueueApp/WpfQueueApp.csproj" Id="bdf3cc34-7fd2-42a6-94ca-3d5424457ef3" />
 </Solution>

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Xml.Linq;
 
 namespace LinkedListLib;
 
@@ -57,11 +58,32 @@ public class MyLinkedList<T> : ICollection<T>
 
     public bool Remove(T item)
     {
-        var node = Find(item);
-        if (node == null)
-            return false;
+        if (Head.Value.Equals(item))
+        {
+            RemoveFirst();
+            return true;
+        }
 
-        return RemoveItem(node);
+        MyLinkedListNode<T> temp = Head;
+
+        while(temp.Next  != null)
+        {
+            if(temp.Next.Value.Equals(item))
+            {
+                if (temp.Next == Tail)
+                {
+                    RemoveLast();
+                    return true;
+                }
+
+                temp.Next = temp.Next.Next;
+                Count--;
+                return true;
+            }
+            temp = temp.Next;
+        }
+
+        return false;
     }
 
     private MyLinkedListNode<T> Find(T? item)
@@ -110,51 +132,41 @@ public class MyLinkedList<T> : ICollection<T>
     #endregion
 
     #region Remove
-    public bool RemoveItem(MyLinkedListNode<T> node)
+    public void RemoveFirst()
     {
-        if (node == null || Head == null)
-            return false;
+        if (Count == 0)
+            throw new InvalidOperationException("The list is empty.");
 
-        if (Head == node && Head == Tail)
-        {
-            Clear();
-            return true;
-        }
-
-        if (node == Head)
-        {
-            Head = Head.Next;
-            Count--;
-
-            if (Count == 1)
-                Tail = Head;
-
-            return true;
-        }
-
-        MyLinkedListNode<T> temp = Head;
-
-        while (temp.Next != null && temp.Next != node)
-        {
-            temp = temp.Next;
-        }
-
-        if (temp.Next == null)
-            return false;
-
-        if (node == Tail)
-        {
-            Tail = temp;
-        }
-
-        temp.Next = node.Next;
-
+        Head = Head.Next;
         Count--;
 
-        if (Count == 1)
+        if(Count == 1)
             Tail = Head;
+    }
 
-        return true;
+    public void RemoveLast()
+    {
+        if(Count == 0)
+        {
+            throw new InvalidOperationException("The list is empty.");
+        }
+
+        if(Count == 1)
+        {
+            Head = null;
+            Tail = null;
+            Count = 0;
+            return;
+        }
+
+        MyLinkedListNode<T> node = Head;
+        while(node.Next != Tail )
+        {
+            node = node.Next;
+        }
+        node.Next = null;
+        Tail = node;
+        Count--;
     }
     #endregion
 }
