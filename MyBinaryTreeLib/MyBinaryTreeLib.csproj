@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MyStackLib\MyStackLib.csproj" />
+  </ItemGroup>
+
 </Project>
