@@ -146,6 +146,7 @@ using MyQueueLib;
 var root = new MyBinaryTreeNode<int>(10);
 var tree = new MyBinaryTree<int>(root);
 
+// Add
 tree = tree.Add(5);
 tree = tree.Add(4);
 tree = tree.Add(7);
